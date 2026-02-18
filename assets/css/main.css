@@ -4880,3 +4880,9 @@ section,
 .logo img{
     max-height: none !important;
 }
+
+/* soften hero image so text stands out */
+.hero-visual img {
+    opacity: 0.55;
+    filter: brightness(0.7) contrast(1.1) blur(0.5px);
+}
