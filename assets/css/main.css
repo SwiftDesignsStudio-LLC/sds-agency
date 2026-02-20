@@ -4905,3 +4905,167 @@ section,
   width: 400px;
   height: 300px;
 }
+
+/* ===============================
+   CONTACT FORM DARK THEME FIX
+   Swift Designs Studio
+================================= */
+
+.form-wrapper {
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 16px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+/* labels */
+.form-wrapper label {
+  color: #cfd8e3;
+  font-weight: 500;
+  margin-bottom: 6px;
+}
+
+/* input + textarea + select */
+.form-wrapper .form-control {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  border-radius: 10px;
+  padding: 12px 14px;
+  transition: all 0.25s ease;
+}
+
+/* remove white autofill on mac/chrome */
+.form-wrapper input:-webkit-autofill,
+.form-wrapper input:-webkit-autofill:hover,
+.form-wrapper input:-webkit-autofill:focus,
+.form-wrapper textarea:-webkit-autofill {
+  -webkit-text-fill-color: #ffffff;
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+/* placeholder text */
+.form-wrapper ::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+/* focus effect */
+.form-wrapper .form-control:focus {
+  border-color: #4da3ff;
+  box-shadow: 0 0 0 2px rgba(77,163,255,0.25);
+  background: rgba(255, 255, 255, 0.07);
+  outline: none;
+}
+
+/* select dropdown arrow fix */
+.form-wrapper select.form-control {
+  appearance: none;
+}
+
+/* submit button */
+.submit-btn {
+  width: 100%;
+  background: linear-gradient(135deg, #2f80ed, #56ccf2);
+  border: none;
+  padding: 14px;
+  color: white;
+  font-weight: 600;
+  border-radius: 10px;
+  margin-top: 18px;
+  transition: all 0.25s ease;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.35);
+}
+
+/* footer text */
+.form-footer {
+  margin-top: 14px;
+  color: rgba(255,255,255,0.65);
+  font-size: 14px;
+}
+
+/* =============================
+   FOUNDER IMAGE SIZE FIX
+   ============================= */
+
+/* center the single profile */
+.team-slider .swiper-wrapper {
+  justify-content: center;
+}
+
+/* control card width */
+.team-member {
+  max-width: 420px;
+  margin: 0 auto;
+}
+
+/* control image size */
+.member-image img {
+  width: 100%;
+  height: auto;
+  max-height: 480px;
+  object-fit: cover;
+  border-radius: 14px;
+}
+
+/* give the card breathing room */
+.team-member {
+  padding: 10px;
+}
+
+/* optional: soften appearance */
+.member-image {
+  overflow: hidden;
+  border-radius: 14px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.35);
+}
+
+/* =========================
+   FOUNDER SECTION
+   ========================= */
+
+.founder-section {
+  margin-top: 40px;
+}
+
+.founder-content h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.founder-content p {
+  color: #b7c2d0;
+  font-size: 16px;
+  line-height: 1.7;
+}
+
+.founder-benefits {
+  margin-top: 20px;
+  padding-left: 0;
+  list-style: none;
+}
+
+.founder-benefits li {
+  margin-bottom: 10px;
+  font-size: 16px;
+  color: #d9e1ec;
+}
+
+.founder-image img {
+  max-width: 360px;
+  width: 100%;
+  border-radius: 14px;
+  box-shadow: 0 25px 50px rgba(0,0,0,0.45);
+}
+
+/* Mobile Fix */
+@media (max-width: 991px) {
+  .founder-image {
+    margin-top: 40px;
+  }
+}
