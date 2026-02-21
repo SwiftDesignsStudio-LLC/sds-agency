@@ -114,7 +114,9 @@
   /**
    * Initiate Pure Counter
    */
+  if (typeof PureCounter !== "undefined") {
   new PureCounter();
+}
 
   /**
    * Init isotope layout and filters

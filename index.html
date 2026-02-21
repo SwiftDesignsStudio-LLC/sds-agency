@@ -726,8 +726,8 @@
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
-        <div class="row align-items-center mb-5">
-          <div class="col-lg-6" data-aos="fade-right" data-aos-delay="200">
+        <div class="row justify-content-center text-center">
+          <div class="col-lg-8">
             <div class="intro-content">
               <span class="badge">Why Choose Us</span>
               <h2>A Website That Actually brings You Customers</h2>
@@ -753,11 +753,7 @@
             </div>
           </div>
 
-          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300">
-            <div class="showcase-image">
-              <img src="assets/img/illustration/illustration-18.webp" alt="Digital Solutions" class="img-fluid">
-            </div>
-          </div>
+          <div class="col-lg-6" data-aos="fade-left" data-aos-delay="300"></div>
         </div>
 
         <div class="row g-4 mb-5">
@@ -900,127 +896,105 @@
 
     </section><!-- /Why Us Section -->
 
-    <!-- Testimonials Section -->
-    <section id="testimonials" class="testimonials section light-background">
+    <!-- What You Get Section -->
+    <section id="features" class="testimonials section">
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>What You Get</h2>
-        <div><span>Every Website Includes</span> <span class="description-title">These Features</span></div>
-      </div><!-- End Section Title -->
+        <div>
+          <span>Every Website Includes</span>
+          <span class="description-title">These Features</span>
+        </div>
+      </div>
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
+        <!-- IMPORTANT: testimonials-slider class is required -->
         <div class="testimonials-slider swiper init-swiper">
+
           <script type="application/json" class="swiper-config">
-            {
-              "slidesPerView": 1,
-              "loop": true,
-              "speed": 600,
-              "autoplay": {
-                "delay": 5000
-              },
-              "navigation": {
-                "nextEl": ".swiper-button-next",
-                "prevEl": ".swiper-button-prev"
-              }
-            }
-          </script>
+      {
+        "slidesPerView": 1,
+        "loop": true,
+        "speed": 700,
+        "autoplay": {
+          "delay": 5000,
+          "disableOnInteraction": false
+        },
+        "navigation": {
+          "nextEl": "#features .swiper-button-next",
+          "prevEl": "#features .swiper-button-prev"
+        }
+      }
+      </script>
 
           <div class="swiper-wrapper">
 
+            <!-- Slide 1 -->
             <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Mobile-Friendly Design</h2>
-                    <p>
-                      Your website will look clean and professional on phones, tablets, and computers. Most customers
-                      visit from their phones, so we design your site to work perfectly on every screen size.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <div class="profile-info">
-                        <h3>Works on All Devices</h3>
-                        <span>Better user experience</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="testimonial-item text-center">
+                <h2>Mobile-Friendly Design</h2>
+                <p>
+                  Your website will look clean and professional on phones, tablets, and computers.
+                  Most customers visit from their phones, so we design your site to work perfectly on every screen size.
+                </p>
+                <h4>Works on All Devices</h4>
+                <span>Better user experience</span>
               </div>
-            </div><!-- End Testimonial Item -->
+            </div>
 
+            <!-- Slide 2 -->
             <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Built to Be Found on Google</h2>
-                    <p>
-                      We structure your website so search engines understand your services and location. This helps your
-                      business appear when customers search for what you offer.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <div class="profile-info">
-                        <h3>Local SEO Ready</h3>
-                        <span>Helps customers find you</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="testimonial-item text-center">
+                <h2>Built to Be Found on Google</h2>
+                <p>
+                  We structure your website so search engines understand your services and location.
+                  This helps your business appear when customers search for what you offer.
+                </p>
+                <h4>Local SEO Ready</h4>
+                <span>Helps customers find you</span>
               </div>
-            </div><!-- End Testimonial Item -->
+            </div>
 
+            <!-- Slide 3 -->
             <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>
-                      Customer Contact &amp; Lead Forms
-                    </h2>
-                    <p>
-                      Your website includes professional contact forms so customers can easily request guotes, ask
-                      guestions, and reach you directly.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <div class="profile-info">
-                        <h3>More Inquiries</h3>
-                        <span>Turn visitors into customers</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="testimonial-item text-center">
+                <h2>Customer Contact & Lead Forms</h2>
+                <p>
+                  Your website includes professional contact forms so customers can easily request quotes,
+                  ask questions, and reach you directly.
+                </p>
+                <h4>More Inquiries</h4>
+                <span>Turn visitors into customers</span>
               </div>
-            </div><!-- End Testimonial Item -->
+            </div>
 
+            <!-- Slide 4 -->
             <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="row">
-                  <div class="col-lg-8">
-                    <h2>Ongoing Support Available</h2>
-                    <p>
-                      Need updates later? We can help change photos, update services, or pricing so your website always
-                      stays current.
-                    </p>
-                    <div class="profile d-flex align-items-center">
-                      <div class="profile-info">
-                        <h3>We Don't Disappear</h3>
-                        <span>Help when you need it</span>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+              <div class="testimonial-item text-center">
+                <h2>Ongoing Support Available</h2>
+                <p>
+                  Need updates later? We can help change photos, update services, or pricing so your website always
+                  stays current.
+                </p>
+                <h4>We Don't Disappear</h4>
+                <span>Help when you need it</span>
               </div>
-            </div><!-- End Testimonial Item -->
+            </div>
+
           </div>
 
-          <div class="swiper-navigation w-100 d-flex align-items-center justify-content-center">
+          <!-- Navigation Arrows (must stay inside swiper) -->
+          <div class="swiper-nav-center">
             <div class="swiper-button-prev"></div>
             <div class="swiper-button-next"></div>
           </div>
-        </div>
-      </div>
-    </section><!-- /Testimonials Section -->
 
-    <!-- Team Section -->
+        </div>
+
+      </div>
+    </section> <!-- Team Section -->
     <section id="team" class="team section">
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
@@ -1088,13 +1062,16 @@
               </div>
               <h2>Ready to Grow Your Business Online?</h2>
               <p>
-                We help small businesses turn their websites into customer-generating tools. Whether you need a brand
-                new website, a redesign, or help getting found on Google, our goal is simple - make your business look
+                We help small businesses turn their websites into customer-generating tools. Whether you need a
+                brand
+                new website, a redesign, or help getting found on Google, our goal is simple - make your business
+                look
                 professional online and help more people contact you.
               </p>
               <br>
               <p>
-                Tell us a little about your business and what you're looking to achieve. We'll review your project and
+                Tell us a little about your business and what you're looking to achieve. We'll review your project
+                and
                 provide clear next steps along with a free consultation.
               </p>
             </div>
