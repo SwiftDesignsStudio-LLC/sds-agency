@@ -25,3 +25,7 @@ function initDynamicNav() {
     });
 }
 
+document.addEventListener("DOMContentLoaded", () => {
+    includeHTML("header", "/components/header.html");
+    includeHTML("footer", "/components/footer.html");
+});
