@@ -142,6 +142,15 @@
     <!-- injected footer -->
     <div id="footer"></div>
 
+    <!-- Cookie Banner -->
+    <div id="cookie-banner" class="cookie-banner">
+        <p>
+            This website uses cookies to ensure you get the best experience on our website.
+            <a href="privacy.html">Learn more</a>
+        </p>
+        <button id="accept-cookies" type="button">Accept</button>
+    </div>
+
     <!-- Back to top button REQUIRED by main.js -->
     <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
@@ -156,18 +165,28 @@
     <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-    <!-- Layout loader (loads header/footer THEN main.js) -->
+    <!-- Layout loader -->
     <script src="assets/js/components.js"></script>
 
+    <!-- Cookie Banner Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const cookieBanner = document.getElementById("cookie-banner");
+            const acceptButton = document.getElementById("accept-cookies");
 
-    <div id="cookie-banner" class="cookie-banner">
-        <p>
-            This website uses cookies to ensure you get the best experience on our website.
-            <a href="privacy.html">Learn more</a>
-        </p>
-        <button id="accept-cookies">Accept</button>
-    </div>
+            if (!cookieBanner || !acceptButton) return;
 
+            if (localStorage.getItem("cookiesAccepted") === "true") {
+                cookieBanner.style.display = "none";
+                return;
+            }
+
+            acceptButton.addEventListener("click", function () {
+                localStorage.setItem("cookiesAccepted", "true");
+                cookieBanner.style.display = "none";
+            });
+        });
+    </script>
 </body>
 
 </html>
