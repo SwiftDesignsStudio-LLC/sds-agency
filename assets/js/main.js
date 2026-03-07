@@ -263,3 +263,20 @@ if (service) {
     mainHeading.textContent = services[service].title;
   }
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const cookieBanner = document.getElementById("cookie-banner");
+  const acceptButton = document.getElementById("accept-cookies");
+
+  if (!cookieBanner || !acceptButton) return;
+
+  if (localStorage.getItem("cookiesAccepted") === "true") {
+    cookieBanner.style.display = "none";
+    return;
+  }
+
+  acceptButton.addEventListener("click", function () {
+    localStorage.setItem("cookiesAccepted", "true");
+    cookieBanner.style.display = "none";
+  });
+});

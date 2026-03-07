@@ -1,95 +1,189 @@
-# Swift Designs Studio — Company Website
+# Swift Designs Studio LLC
 
-Official marketing website for **Swift Designs Studio LLC**, a local web design agency focused on helping small businesses launch fast, professional, lead‑generating websites.
+![Website](https://img.shields.io/badge/Website-swiftdesignsstudio.com-blue)
+![Deployment](https://img.shields.io/badge/Deployment-Vercel-black)
+![License](https://img.shields.io/badge/License-Proprietary-lightgrey)
+![Status](https://img.shields.io/badge/Status-Active-success)
 
----
+## Website Preview
 
-## 🌐 Live Site
+![Swift Designs Studio Website](assets/img/logo-transparent.png)
 
-[https://www.swiftdesignsstudio.com](https://www.swiftdesignsstudio.com)
+Swift Designs Studio is a web design and development studio focused on building modern, high-performance websites and digital solutions for businesses and technology companies.
 
----
-
-## About This Project
-
-This repository contains the source code for the Swift Designs Studio company website. The site serves as the agency’s public presence, portfolio, and lead‑generation platform. It showcases services, past projects, and provides a contact form for client inquiries.
-
-Primary goals:
-
-* Establish professional online credibility
-* Showcase real client and demo projects
-* Generate consultation requests
-* Provide information about services and pricing direction
+This repository contains the source code for the official Swift Designs Studio website.
 
 ---
 
-## Features
+## Overview
 
-* Responsive mobile‑first design
-* Service overview pages
-* Portfolio / case study previews
-* Contact page for consultations
-* SEO‑friendly page structure
-* Fast static hosting via GitHub Pages
+Swift Designs Studio helps organizations establish a strong digital presence through clean, modern, and conversion-focused websites. Our work focuses on performance, usability, and professional design that helps businesses attract customers and generate leads online.
+
+We partner with small businesses as well as software companies and digital agencies that need reliable web development support.
 
 ---
 
-## Tech Stack
+## Who We Work With
 
-* HTML5
-* CSS3
-* Bootstrap 5
-* JavaScript (vanilla)
-* Git & GitHub Pages (hosting)
+Swift Designs Studio works with:
+
+- Small businesses looking to establish a professional online presence
+- Startups launching new products or services
+- SaaS companies that need marketing websites
+- Software companies that require additional front-end development support
+- Digital agencies seeking development collaboration
+
+We help teams move faster by providing reliable web development and implementation support.
+
+---
+
+## Core Services
+
+### Business Website Development
+
+We design and build modern, mobile-friendly websites tailored to small businesses and growing companies.
+
+Key features include:
+
+- Responsive design for all devices
+- SEO-friendly page structure
+- Lead generation forms
+- Fast loading performance
+- Clean professional UI/UX
+
+---
+
+### Booking & Appointment Systems
+
+We implement online booking systems that allow businesses to accept appointments directly from their website.
+
+Capabilities include:
+
+- Online appointment scheduling
+- Automated confirmations
+- Reminder notifications
+- Integration with business workflows
+
+---
+
+### Website Maintenance & Support
+
+We provide ongoing website maintenance and technical support to ensure websites remain secure, updated, and performing well.
+
+Services include:
+
+- Security updates
+- Performance monitoring
+- Content updates
+- Bug fixes and improvements
+
+---
+
+### Development Support for Technology Companies
+
+Swift Designs Studio also collaborates with **software companies, SaaS teams, and digital agencies** that need additional development bandwidth.
+
+We provide support for:
+
+- Front-end development
+- UI implementation from Figma or design systems
+- SaaS marketing websites
+- Landing page development
+- Website optimization and performance improvements
+- Technical rebuilds of existing sites
+- Web application interface development
+
+Our goal is to help teams **deliver projects faster without increasing internal engineering headcount**.
+
+---
+
+## Collaboration Opportunities
+
+Swift Designs Studio is open to collaborating with:
+
+- Software companies
+- SaaS startups
+- Product teams
+- Digital agencies
+- Engineering teams
+
+If your team needs support with front-end development, marketing websites, or technical implementation, we are available to assist.
+
+For partnership or collaboration inquiries:
+
+**contact@swiftdesignsstudio.com**
+
+---
+
+## Technology Stack
+
+This website is built using modern front-end technologies:
+
+- HTML5
+- CSS3
+- Bootstrap
+- JavaScript
+- Modular component architecture
+
+Vendor libraries include:
+
+- AOS
+- Swiper
+- GLightbox
 
 ---
 
 ## Project Structure
 
-```
-sds-agency/
-│
-├── index.html
-├── about.html
-├── services.html
-├── portfolio.html
-├── contact.html
-│
-├── assets/
-│   ├── css/
-│   ├── js/
-│   └── img/
-│       └── projects/
-│
-└── README.md
-```
+    assets/
+      css/
+      js/
+      img/
+      vendor/
+
+    components/
+      header.html
+      footer.html
+
+    index.html
+    services.html
+    projects.html
+    process.html
+    contact.html
+    websites.html
+    booking-systems.html
+    maintenance.html
+    privacy.html
+    terms.html
+
+The site uses **reusable components** for shared layout elements such as the header and footer.
 
 ---
 
-## Running Locally
+## Deployment
 
-You can preview the website locally using any static server.
+This website is deployed using **Vercel** with automatic deployments connected to GitHub.
 
-### Option 1 — VS Code Live Server (Recommended)
+Development workflow:
 
-1. Install the **Live Server** extension in VS Code
-2. Right‑click `index.html`
-3. Click **Open with Live Server**
+    dev   → development branch
+    main  → production branch
+
+Updates are tested in the development branch before being merged into production.
 
 ---
 
-## Portfolio Projects Shown
+## About Swift Designs Studio
 
-The portfolio demonstrates example business website builds including:
+Swift Designs Studio LLC works with businesses and technology companies that need professional, reliable web development services.
 
-* Church website
-* Barbershop
-* Restaurant
-* Cleaning service
-* Real estate agent
-* Lawn care business
+We focus on building websites that are:
 
-(Some projects are demo builds created to demonstrate capability and layout patterns for small businesses.)
+- Professional
+- Fast
+- Mobile-friendly
+- Easy to maintain
+- Designed to convert visitors into customers
 
 ---
 
@@ -97,14 +191,11 @@ The portfolio demonstrates example business website builds including:
 
 **Swift Designs Studio LLC**
 
-Email: [info@swiftdesignsstudio.com](mailto:info@swiftdesignsstudio.com)
+Website  
+https://swiftdesignsstudio.com
 
-Request a consultation through the website contact page.
+Email  
+contact@swiftdesignsstudio.com
 
----
-
-## License
-
-This project is for business and portfolio use. Reuse or redistribution of branding, images, or written content without permission is not allowed.
-
-© 2026 Swift Designs Studio LLC. All Rights Reserved.
+Phone  
+(619) 268-1394
