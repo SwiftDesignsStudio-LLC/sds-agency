@@ -1,26 +1,26 @@
-# Global Footer
---------------------------------------------------------------*/
+/* =====================================================
+   GLOBAL FOOTER
+   Swift Designs Studio
+===================================================== */
+
 .footer {
+  background-color: #0c1623;
   color: var(--default-color);
-  background-color: var(--background-color);
   font-size: 14px;
-  padding-bottom: 50px;
   position: relative;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
 }
 
+/* Top section */
 .footer .footer-top {
-  padding-top: 50px;
-  border-top: 1px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  padding: 60px 0 30px;
 }
 
+/* Company / brand */
 .footer .footer-about .logo {
   line-height: 1;
   margin-bottom: 25px;
-}
-
-.footer .footer-about .logo img {
-  max-height: 40px;
-  margin-right: 6px;
+  text-decoration: none;
 }
 
 .footer .footer-about .logo span {
@@ -32,8 +32,17 @@
 }
 
 .footer .footer-about p {
+  color: #aab3c5;
   font-size: 14px;
+  line-height: 1.8;
   font-family: var(--heading-font);
+  max-width: 420px;
+}
+
+/* Social links */
+.footer .social-links {
+  display: flex;
+  gap: 12px;
 }
 
 .footer .social-links a {
@@ -43,11 +52,10 @@
   width: 40px;
   height: 40px;
   border-radius: 50%;
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  border: 1px solid rgba(255, 255, 255, 0.4);
   font-size: 16px;
-  color: color-mix(in srgb, var(--default-color), transparent 50%);
-  margin-right: 10px;
-  transition: 0.3s;
+  color: rgba(255, 255, 255, 0.7);
+  transition: all 0.3s ease;
 }
 
 .footer .social-links a:hover {
@@ -55,13 +63,15 @@
   border-color: var(--accent-color);
 }
 
+/* Footer headings */
 .footer h4 {
+  color: #ffffff;
   font-size: 16px;
-  font-weight: bold;
-  position: relative;
-  padding-bottom: 12px;
+  font-weight: 600;
+  margin-bottom: 16px;
 }
 
+/* Footer links */
 .footer .footer-links {
   margin-bottom: 30px;
 }
@@ -72,16 +82,8 @@
   margin: 0;
 }
 
-.footer .footer-links ul i {
-  padding-right: 2px;
-  font-size: 12px;
-  line-height: 0;
-}
-
 .footer .footer-links ul li {
   padding: 10px 0;
-  display: flex;
-  align-items: center;
 }
 
 .footer .footer-links ul li:first-child {
@@ -89,88 +91,49 @@
 }
 
 .footer .footer-links ul a {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
-  display: inline-block;
-  line-height: 1;
+  color: #aab3c5;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: color 0.2s ease;
 }
 
 .footer .footer-links ul a:hover {
-  color: var(--accent-color);
+  color: #ffffff;
 }
 
+/* Contact */
 .footer .footer-contact p {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  color: #aab3c5;
 }
 
+.footer .footer-contact strong,
+.footer .footer-contact span {
+  color: #ffffff;
+}
+
+/* Copyright */
 .footer .copyright {
-  padding-top: 25px;
-  padding-bottom: 25px;
-  background-color: color-mix(in srgb, var(--default-color), transparent 95%);
+  padding: 25px 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .footer .copyright p {
   margin-bottom: 0;
+  color: #aab3c5;
 }
 
-.footer .credits {
-  margin-top: 6px;
-  font-size: 13px;
+.footer .copyright .sitename {
+  color: #ffffff;
 }
 
+/* Responsive */
+@media (max-width: 991.98px) {
+  .footer .footer-top {
+    padding: 50px 0 20px;
+  }
 
-
-
-
-
-
-
-/* FOOTER */
-
-.site-footer {
-    margin-top: 120px;
-    background: #040a14;
-    border-top: 1px solid rgba(255, 255, 255, .06);
-}
-
-.footer-container {
-    max-width: 1200px;
-    margin: auto;
-    display: grid;
-    grid-template-columns: 2fr 1fr 1fr 1fr;
-    gap: 40px;
-    padding: 60px 20px;
-}
-
-.footer-links {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.footer-links h4 {
-    color: #fff;
-    margin-bottom: 10px;
-}
-
-.footer-links a {
-    color: #aab3c5;
-    text-decoration: none;
-    font-size: .9rem;
-}
-
-.footer-links a:hover {
-    color: #fff;
-}
-
-.footer-brand p {
-    color: #aab3c5;
-    max-width: 380px;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding: 20px;
-    border-top: 1px solid rgba(255, 255, 255, .05);
-    color: #7f8aa3;
-    font-size: .85rem;
+  .footer .footer-about p {
+    max-width: 100%;
+  }
 }
