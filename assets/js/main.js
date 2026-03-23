@@ -1,164 +1,240 @@
 /**
-* Template Name: Forma
-* Template URL: https://bootstrapmade.com/forma-bootstrap-agency-template/
-* Updated: Nov 08 2025 with Bootstrap v5.3.8
-* Author: BootstrapMade.com
-* License: https://bootstrapmade.com/license/
-*/
+ * Swift Designs Studio - Main JS
+ * Cleaned and organized for maintainability
+ */
 
-(function() {
+(() => {
   "use strict";
 
+  const body = document.body;
+  const header = document.querySelector("#header");
+  const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
+  const navMenu = document.querySelector("#navmenu");
+  const scrollTopBtn = document.querySelector(".scroll-top");
+  const preloader = document.querySelector("#preloader");
+
   /**
-   * Apply .scrolled class to the body as the page is scrolled down
+   * ---------------------------------------------------
+   * Header Scrolled State
+   * ---------------------------------------------------
    */
   function toggleScrolled() {
-    const selectBody = document.querySelector('body');
-    const selectHeader = document.querySelector('#header');
-    if (!selectHeader.classList.contains('scroll-up-sticky') && !selectHeader.classList.contains('sticky-top') && !selectHeader.classList.contains('fixed-top')) return;
-    window.scrollY > 100 ? selectBody.classList.add('scrolled') : selectBody.classList.remove('scrolled');
-  }
+    if (!header) return;
 
-  document.addEventListener('scroll', toggleScrolled);
-  window.addEventListener('load', toggleScrolled);
+    const isStickyHeader =
+      header.classList.contains("scroll-up-sticky") ||
+      header.classList.contains("sticky-top") ||
+      header.classList.contains("fixed-top");
 
-  /**
-   * Mobile nav toggle
-   */
-  const mobileNavToggleBtn = document.querySelector('.mobile-nav-toggle');
+    if (!isStickyHeader) return;
 
-  function mobileNavToogle() {
-    document.querySelector('body').classList.toggle('mobile-nav-active');
-    mobileNavToggleBtn.classList.toggle('bi-list');
-    mobileNavToggleBtn.classList.toggle('bi-x');
-  }
-  if (mobileNavToggleBtn) {
-    mobileNavToggleBtn.addEventListener('click', mobileNavToogle);
+    body.classList.toggle("scrolled", window.scrollY > 100);
   }
 
   /**
-   * Hide mobile nav on same-page/hash links
+   * ---------------------------------------------------
+   * Mobile Navigation
+   * ---------------------------------------------------
    */
-  document.querySelectorAll('#navmenu a').forEach(navmenu => {
-    navmenu.addEventListener('click', () => {
-      if (document.querySelector('.mobile-nav-active')) {
-        mobileNavToogle();
-      }
-    });
+  function setMobileNavState(isOpen) {
+    body.classList.toggle("mobile-nav-active", isOpen);
 
-  });
-
-  /**
-   * Toggle mobile nav dropdowns
-   */
-  document.querySelectorAll('.navmenu .toggle-dropdown').forEach(navmenu => {
-    navmenu.addEventListener('click', function(e) {
-      e.preventDefault();
-      this.parentNode.classList.toggle('active');
-      this.parentNode.nextElementSibling.classList.toggle('dropdown-active');
-      e.stopImmediatePropagation();
-    });
-  });
-
-  /**
-   * Preloader
-   */
-  const preloader = document.querySelector('#preloader');
-  if (preloader) {
-    window.addEventListener('load', () => {
-      preloader.remove();
-    });
-  }
-
-  /**
-   * Scroll top button
-   */
-  let scrollTop = document.querySelector('.scroll-top');
-
-  function toggleScrollTop() {
-    if (scrollTop) {
-      window.scrollY > 100 ? scrollTop.classList.add('active') : scrollTop.classList.remove('active');
+    if (mobileNavToggleBtn) {
+      mobileNavToggleBtn.classList.toggle("bi-list", !isOpen);
+      mobileNavToggleBtn.classList.toggle("bi-x", isOpen);
+      mobileNavToggleBtn.setAttribute("aria-expanded", String(isOpen));
     }
   }
-  scrollTop.addEventListener('click', (e) => {
-    e.preventDefault();
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
-  });
 
-  window.addEventListener('load', toggleScrollTop);
-  document.addEventListener('scroll', toggleScrollTop);
-
-  /**
-   * Animation on scroll function and init
-   */
-  function aosInit() {
-    AOS.init({
-      duration: 600,
-      easing: 'ease-in-out',
-      once: true,
-      mirror: false
-    });
+  function toggleMobileNav() {
+    const isOpen = body.classList.contains("mobile-nav-active");
+    setMobileNavState(!isOpen);
   }
-  window.addEventListener('load', aosInit);
 
-  /**
-   * Initiate glightbox
-   */
-  const glightbox = GLightbox({
-    selector: '.glightbox'
-  });
+  function initMobileNav() {
+    if (!mobileNavToggleBtn) return;
 
-  /**
-   * Initiate Pure Counter
-   */
-  if (typeof PureCounter !== "undefined") {
-  new PureCounter();
-}
+    mobileNavToggleBtn.addEventListener("click", toggleMobileNav);
 
-  /**
-   * Init isotope layout and filters
-   */
-  document.querySelectorAll('.isotope-layout').forEach(function(isotopeItem) {
-    let layout = isotopeItem.getAttribute('data-layout') ?? 'masonry';
-    let filter = isotopeItem.getAttribute('data-default-filter') ?? '*';
-    let sort = isotopeItem.getAttribute('data-sort') ?? 'original-order';
-
-    let initIsotope;
-    imagesLoaded(isotopeItem.querySelector('.isotope-container'), function() {
-      initIsotope = new Isotope(isotopeItem.querySelector('.isotope-container'), {
-        itemSelector: '.isotope-item',
-        layoutMode: layout,
-        filter: filter,
-        sortBy: sort
+    document.querySelectorAll("#navmenu a").forEach((link) => {
+      link.addEventListener("click", () => {
+        if (body.classList.contains("mobile-nav-active")) {
+          setMobileNavState(false);
+        }
       });
     });
 
-    isotopeItem.querySelectorAll('.isotope-filters li').forEach(function(filters) {
-      filters.addEventListener('click', function() {
-        isotopeItem.querySelector('.isotope-filters .filter-active').classList.remove('filter-active');
-        this.classList.add('filter-active');
-        initIsotope.arrange({
-          filter: this.getAttribute('data-filter')
-        });
-        if (typeof aosInit === 'function') {
-          aosInit();
-        }
-      }, false);
-    });
+    document.querySelectorAll(".navmenu .toggle-dropdown").forEach((toggle) => {
+      toggle.addEventListener("click", (event) => {
+        event.preventDefault();
 
-  });
+        const parent = toggle.parentElement;
+        const dropdown = parent?.nextElementSibling;
+
+        if (!parent || !dropdown) return;
+
+        parent.classList.toggle("active");
+        dropdown.classList.toggle("dropdown-active");
+        event.stopImmediatePropagation();
+      });
+    });
+  }
 
   /**
-   * Init swiper sliders
+   * ---------------------------------------------------
+   * Preloader
+   * ---------------------------------------------------
    */
-  function initSwiper() {
-    document.querySelectorAll(".init-swiper").forEach(function(swiperElement) {
-      let config = JSON.parse(
-        swiperElement.querySelector(".swiper-config").innerHTML.trim()
-      );
+  function removePreloader() {
+    if (preloader) {
+      preloader.remove();
+    }
+  }
+
+  /**
+   * ---------------------------------------------------
+   * Scroll To Top Button
+   * ---------------------------------------------------
+   */
+  function toggleScrollTop() {
+    if (!scrollTopBtn) return;
+    scrollTopBtn.classList.toggle("active", window.scrollY > 100);
+  }
+
+  function initScrollTop() {
+    if (!scrollTopBtn) return;
+
+    scrollTopBtn.addEventListener("click", (event) => {
+      event.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+    });
+  }
+
+  /**
+   * ---------------------------------------------------
+   * AOS
+   * ---------------------------------------------------
+   */
+  function initAOS() {
+    if (typeof AOS === "undefined") return;
+
+    AOS.init({
+      duration: 600,
+      easing: "ease-in-out",
+      once: true,
+      mirror: false,
+    });
+  }
+
+  /**
+   * ---------------------------------------------------
+   * GLightbox
+   * ---------------------------------------------------
+   */
+  function initGlightbox() {
+    if (typeof GLightbox === "undefined") return;
+
+    GLightbox({
+      selector: ".glightbox",
+    });
+  }
+
+  /**
+   * ---------------------------------------------------
+   * PureCounter
+   * ---------------------------------------------------
+   */
+  function initPureCounter() {
+    if (typeof PureCounter === "undefined") return;
+    new PureCounter();
+  }
+
+  /**
+   * ---------------------------------------------------
+   * Isotope Layout / Filters
+   * ---------------------------------------------------
+   */
+  function initIsotopeLayouts() {
+    if (
+      typeof Isotope === "undefined" ||
+      typeof imagesLoaded === "undefined"
+    ) {
+      return;
+    }
+
+    document.querySelectorAll(".isotope-layout").forEach((isotopeItem) => {
+      const container = isotopeItem.querySelector(".isotope-container");
+      const filters = isotopeItem.querySelectorAll(".isotope-filters li");
+
+      if (!container) return;
+
+      const layout = isotopeItem.getAttribute("data-layout") || "masonry";
+      const defaultFilter =
+        isotopeItem.getAttribute("data-default-filter") || "*";
+      const sort = isotopeItem.getAttribute("data-sort") || "original-order";
+
+      let isotopeInstance;
+
+      imagesLoaded(container, () => {
+        isotopeInstance = new Isotope(container, {
+          itemSelector: ".isotope-item",
+          layoutMode: layout,
+          filter: defaultFilter,
+          sortBy: sort,
+        });
+      });
+
+      filters.forEach((filterItem) => {
+        filterItem.addEventListener("click", function () {
+          const activeFilter = isotopeItem.querySelector(
+            ".isotope-filters .filter-active"
+          );
+
+          if (activeFilter) {
+            activeFilter.classList.remove("filter-active");
+          }
+
+          this.classList.add("filter-active");
+
+          if (isotopeInstance) {
+            isotopeInstance.arrange({
+              filter: this.getAttribute("data-filter"),
+            });
+          }
+
+          initAOS();
+        });
+      });
+    });
+  }
+
+  /**
+   * ---------------------------------------------------
+   * Swiper
+   * ---------------------------------------------------
+   */
+  function initSwiperWithCustomPagination(swiperElement, config) {
+    new Swiper(swiperElement, config);
+  }
+
+  function initSwipers() {
+    if (typeof Swiper === "undefined") return;
+
+    document.querySelectorAll(".init-swiper").forEach((swiperElement) => {
+      const configElement = swiperElement.querySelector(".swiper-config");
+      if (!configElement) return;
+
+      let config = {};
+
+      try {
+        config = JSON.parse(configElement.innerHTML.trim());
+      } catch (error) {
+        console.error("Invalid Swiper config JSON:", error);
+        return;
+      }
 
       if (swiperElement.classList.contains("swiper-tab")) {
         initSwiperWithCustomPagination(swiperElement, config);
@@ -168,115 +244,174 @@
     });
   }
 
-  window.addEventListener("load", initSwiper);
+  /**
+   * ---------------------------------------------------
+   * Hash Scroll Fix On Page Load
+   * ---------------------------------------------------
+   */
+  function handleHashScrollOnLoad() {
+    if (!window.location.hash) return;
+
+    const section = document.querySelector(window.location.hash);
+    if (!section) return;
+
+    setTimeout(() => {
+      const scrollMarginTop =
+        parseInt(getComputedStyle(section).scrollMarginTop, 10) || 0;
+
+      window.scrollTo({
+        top: section.offsetTop - scrollMarginTop,
+        behavior: "smooth",
+      });
+    }, 100);
+  }
 
   /**
-   * Correct scrolling position upon page load for URLs containing hash links.
+   * ---------------------------------------------------
+   * Nav Scrollspy
+   * ---------------------------------------------------
    */
-  window.addEventListener('load', function(e) {
-    if (window.location.hash) {
-      if (document.querySelector(window.location.hash)) {
-        setTimeout(() => {
-          let section = document.querySelector(window.location.hash);
-          let scrollMarginTop = getComputedStyle(section).scrollMarginTop;
-          window.scrollTo({
-            top: section.offsetTop - parseInt(scrollMarginTop),
-            behavior: 'smooth'
-          });
-        }, 100);
-      }
-    }
-  });
-
-  /**
-   * Navmenu Scrollspy
-   */
-  let navmenulinks = document.querySelectorAll('.navmenu a');
-
   function navmenuScrollspy() {
-    navmenulinks.forEach(navmenulink => {
-      if (!navmenulink.hash) return;
-      let section = document.querySelector(navmenulink.hash);
+    const navLinks = document.querySelectorAll(".navmenu a");
+
+    navLinks.forEach((link) => {
+      if (!link.hash) return;
+
+      const section = document.querySelector(link.hash);
       if (!section) return;
-      let position = window.scrollY + 200;
-      if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-        document.querySelectorAll('.navmenu a.active').forEach(link => link.classList.remove('active'));
-        navmenulink.classList.add('active');
+
+      const position = window.scrollY + 200;
+      const inView =
+        position >= section.offsetTop &&
+        position <= section.offsetTop + section.offsetHeight;
+
+      if (inView) {
+        document
+          .querySelectorAll(".navmenu a.active")
+          .forEach((activeLink) => activeLink.classList.remove("active"));
+
+        link.classList.add("active");
       } else {
-        navmenulink.classList.remove('active');
+        link.classList.remove("active");
       }
-    })
+    });
   }
-  window.addEventListener('load', navmenuScrollspy);
-  document.addEventListener('scroll', navmenuScrollspy);
 
-})();
-
-// Auto copyright year
-document.getElementById("year").textContent = new Date().getFullYear();
-
-// Dynamic Service Page Content
-const params = new URLSearchParams(window.location.search);
-const service = params.get("service");
-
-if (service) {
-  const title = document.querySelector(".heading-title");
-  const description = document.querySelector(".heading-title + p");
-  const mainHeading = document.querySelector("h2");
-
-  const services = {
-    website: {
-      title: "Business Website Design",
-      desc: "Professional websites designed to establish your business online and attract customers.",
-      content: "We design modern, mobile-friendly websites that build trust and clearly present your services to potential clients."
-    },
-    redesign: {
-      title: "Website Redesign",
-      desc: "Transform your outdated website into a modern, high-performing online presence.",
-      content: "We rebuild your current website with improved speed, mobile usability, and a modern professional look."
-    },
-    development: {
-      title: "Custom Web Development",
-      desc: "Advanced features and custom functionality tailored to your business.",
-      content: "Booking systems, forms, customer portals, and custom integrations built specifically for your workflow."
-    },
-    maintenance: {
-      title: "Website Maintenance & Support",
-      desc: "We keep your site secure, updated, and running smoothly.",
-      content: "Ongoing updates, security monitoring, content edits, and technical support so you never worry about your website."
-    },
-    "local-seo": {
-      title: "Google Business & Local SEO",
-      desc: "Help nearby customers find your business on Google Maps and search.",
-      content: "We optimize your local presence so your business appears when people search in your area."
-    },
-    seo: {
-      title: "Search Engine Optimization (SEO)",
-      desc: "Improve rankings and bring more organic traffic to your website.",
-      content: "Keyword optimization, on-page SEO, and performance improvements that increase visibility."
+  /**
+   * ---------------------------------------------------
+   * Auto Copyright Year
+   * ---------------------------------------------------
+   */
+  function setCopyrightYear() {
+    const yearElement = document.getElementById("year");
+    if (yearElement) {
+      yearElement.textContent = new Date().getFullYear();
     }
-  };
-
-  if (services[service]) {
-    title.textContent = services[service].title;
-    description.textContent = services[service].desc;
-    mainHeading.textContent = services[service].title;
-  }
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const cookieBanner = document.getElementById("cookie-banner");
-  const acceptButton = document.getElementById("accept-cookies");
-
-  if (!cookieBanner || !acceptButton) return;
-
-  if (localStorage.getItem("cookiesAccepted") === "true") {
-    cookieBanner.style.display = "none";
-    return;
   }
 
-  acceptButton.addEventListener("click", function () {
-    localStorage.setItem("cookiesAccepted", "true");
-    cookieBanner.style.display = "none";
+  /**
+   * ---------------------------------------------------
+   * Dynamic Service Page Content
+   * ---------------------------------------------------
+   */
+  function initDynamicServiceContent() {
+    const params = new URLSearchParams(window.location.search);
+    const service = params.get("service");
+
+    if (!service) return;
+
+    const title = document.querySelector(".heading-title");
+    const description = document.querySelector(".heading-title + p");
+    const mainHeading = document.querySelector("h2");
+
+    if (!title || !description || !mainHeading) return;
+
+    const services = {
+      website: {
+        title: "Business Website Design",
+        desc: "Professional websites designed to establish your business online and attract customers.",
+      },
+      redesign: {
+        title: "Website Redesign",
+        desc: "Transform your outdated website into a modern, high-performing online presence.",
+      },
+      development: {
+        title: "Custom Web Development",
+        desc: "Advanced features and custom functionality tailored to your business.",
+      },
+      maintenance: {
+        title: "Website Maintenance & Support",
+        desc: "We keep your site secure, updated, and running smoothly.",
+      },
+      "local-seo": {
+        title: "Google Business & Local SEO",
+        desc: "Help nearby customers find your business on Google Maps and search.",
+      },
+      seo: {
+        title: "Search Engine Optimization (SEO)",
+        desc: "Improve rankings and bring more organic traffic to your website.",
+      },
+    };
+
+    const selectedService = services[service];
+    if (!selectedService) return;
+
+    title.textContent = selectedService.title;
+    description.textContent = selectedService.desc;
+    mainHeading.textContent = selectedService.title;
+  }
+
+  /**
+   * ---------------------------------------------------
+   * Cookie Banner
+   * ---------------------------------------------------
+   */
+  function initCookieBanner() {
+    const cookieBanner = document.getElementById("cookie-banner");
+    const acceptButton = document.getElementById("accept-cookies");
+
+    if (!cookieBanner || !acceptButton) return;
+
+    if (localStorage.getItem("cookiesAccepted") === "true") {
+      cookieBanner.style.display = "none";
+      return;
+    }
+
+    acceptButton.addEventListener("click", () => {
+      localStorage.setItem("cookiesAccepted", "true");
+      cookieBanner.style.display = "none";
+    });
+  }
+
+  /**
+   * ---------------------------------------------------
+   * Event Bindings
+   * ---------------------------------------------------
+   */
+  document.addEventListener("scroll", () => {
+    toggleScrolled();
+    toggleScrollTop();
+    navmenuScrollspy();
   });
-});
+
+  document.addEventListener("DOMContentLoaded", () => {
+    initMobileNav();
+    initScrollTop();
+    setCopyrightYear();
+    initDynamicServiceContent();
+    initCookieBanner();
+  });
+
+  window.addEventListener("load", () => {
+    toggleScrolled();
+    toggleScrollTop();
+    removePreloader();
+    initAOS();
+    initGlightbox();
+    initPureCounter();
+    initIsotopeLayouts();
+    initSwipers();
+    handleHashScrollOnLoad();
+    navmenuScrollspy();
+  });
+})();
