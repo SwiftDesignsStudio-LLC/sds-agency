@@ -7,7 +7,7 @@
 
 ## Website Preview
 
-![Swift Designs Studio Website](assets/img/logo-transparent.png)
+![Swift Designs Studio Website](assets/img/logo-white.png)
 
 Swift Designs Studio is a web design and development studio focused on building modern, high-performance websites and digital solutions for businesses and technology companies.
 
