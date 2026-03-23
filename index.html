@@ -416,7 +416,6 @@
         <i class="bi bi-arrow-up-short"></i>
     </a>
 
-    <!-- Vendor JS Files -->
     <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
     <script src="assets/vendor/aos/aos.js"></script>
     <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
@@ -425,29 +424,9 @@
     <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
     <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
 
-    <!-- Layout loader -->
     <script src="assets/js/components.js"></script>
 
-    <!-- Cookie Banner Script -->
-    <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            const cookieBanner = document.getElementById("cookie-banner");
-            const acceptButton = document.getElementById("accept-cookies");
-
-            if (!cookieBanner || !acceptButton) return;
-
-            if (localStorage.getItem("cookiesAccepted") === "true") {
-                cookieBanner.style.display = "none";
-                return;
-            }
-
-            acceptButton.addEventListener("click", function () {
-                localStorage.setItem("cookiesAccepted", "true");
-                cookieBanner.style.display = "none";
-            });
-        });
-    </script>
-
+    <!-- LeadConnector Chat Widget -->
     <script>
         (function () {
             var script = document.createElement('script');

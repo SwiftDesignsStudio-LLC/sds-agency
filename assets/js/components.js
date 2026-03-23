@@ -24,20 +24,23 @@ async function initLayout() {
   await loadComponent("footer", "/components/footer.html");
   await new Promise(requestAnimationFrame);
 
-  const script = document.createElement("script");
-  script.src = "/assets/js/main.js";
+  if (!document.querySelector('script[data-main-js="true"]')) {
+    const script = document.createElement("script");
+    script.src = "/assets/js/main.js";
+    script.setAttribute("data-main-js", "true");
 
-  script.onload = () => {
-    if (window.AOS) {
-      AOS.init({
-        duration: 800,
-        easing: "ease-in-out",
-        once: true
-      });
-    }
-  };
+    script.onload = () => {
+      if (window.AOS) {
+        AOS.init({
+          duration: 800,
+          easing: "ease-in-out",
+          once: true
+        });
+      }
+    };
 
-  document.body.appendChild(script);
+    document.body.appendChild(script);
+  }
 }
 
 document.addEventListener("DOMContentLoaded", initLayout);

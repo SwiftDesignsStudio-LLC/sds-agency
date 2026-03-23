@@ -1,6 +1,5 @@
 /**
  * Swift Designs Studio - Main JS
- * Cleaned and organized for maintainability
  */
 
 (() => {
@@ -9,15 +8,9 @@
   const body = document.body;
   const header = document.querySelector("#header");
   const mobileNavToggleBtn = document.querySelector(".mobile-nav-toggle");
-  const navMenu = document.querySelector("#navmenu");
   const scrollTopBtn = document.querySelector(".scroll-top");
   const preloader = document.querySelector("#preloader");
 
-  /**
-   * ---------------------------------------------------
-   * Header Scrolled State
-   * ---------------------------------------------------
-   */
   function toggleScrolled() {
     if (!header) return;
 
@@ -31,11 +24,6 @@
     body.classList.toggle("scrolled", window.scrollY > 100);
   }
 
-  /**
-   * ---------------------------------------------------
-   * Mobile Navigation
-   * ---------------------------------------------------
-   */
   function setMobileNavState(isOpen) {
     body.classList.toggle("mobile-nav-active", isOpen);
 
@@ -80,22 +68,10 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * Preloader
-   * ---------------------------------------------------
-   */
   function removePreloader() {
-    if (preloader) {
-      preloader.remove();
-    }
+    if (preloader) preloader.remove();
   }
 
-  /**
-   * ---------------------------------------------------
-   * Scroll To Top Button
-   * ---------------------------------------------------
-   */
   function toggleScrollTop() {
     if (!scrollTopBtn) return;
     scrollTopBtn.classList.toggle("active", window.scrollY > 100);
@@ -113,11 +89,6 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * AOS
-   * ---------------------------------------------------
-   */
   function initAOS() {
     if (typeof AOS === "undefined") return;
 
@@ -129,11 +100,6 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * GLightbox
-   * ---------------------------------------------------
-   */
   function initGlightbox() {
     if (typeof GLightbox === "undefined") return;
 
@@ -142,26 +108,13 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * PureCounter
-   * ---------------------------------------------------
-   */
   function initPureCounter() {
     if (typeof PureCounter === "undefined") return;
     new PureCounter();
   }
 
-  /**
-   * ---------------------------------------------------
-   * Isotope Layout / Filters
-   * ---------------------------------------------------
-   */
   function initIsotopeLayouts() {
-    if (
-      typeof Isotope === "undefined" ||
-      typeof imagesLoaded === "undefined"
-    ) {
+    if (typeof Isotope === "undefined" || typeof imagesLoaded === "undefined") {
       return;
     }
 
@@ -211,15 +164,6 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * Swiper
-   * ---------------------------------------------------
-   */
-  function initSwiperWithCustomPagination(swiperElement, config) {
-    new Swiper(swiperElement, config);
-  }
-
   function initSwipers() {
     if (typeof Swiper === "undefined") return;
 
@@ -236,19 +180,10 @@
         return;
       }
 
-      if (swiperElement.classList.contains("swiper-tab")) {
-        initSwiperWithCustomPagination(swiperElement, config);
-      } else {
-        new Swiper(swiperElement, config);
-      }
+      new Swiper(swiperElement, config);
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * Hash Scroll Fix On Page Load
-   * ---------------------------------------------------
-   */
   function handleHashScrollOnLoad() {
     if (!window.location.hash) return;
 
@@ -266,11 +201,6 @@
     }, 100);
   }
 
-  /**
-   * ---------------------------------------------------
-   * Nav Scrollspy
-   * ---------------------------------------------------
-   */
   function navmenuScrollspy() {
     const navLinks = document.querySelectorAll(".navmenu a");
 
@@ -297,11 +227,6 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * Auto Copyright Year
-   * ---------------------------------------------------
-   */
   function setCopyrightYear() {
     const yearElement = document.getElementById("year");
     if (yearElement) {
@@ -309,11 +234,6 @@
     }
   }
 
-  /**
-   * ---------------------------------------------------
-   * Dynamic Service Page Content
-   * ---------------------------------------------------
-   */
   function initDynamicServiceContent() {
     const params = new URLSearchParams(window.location.search);
     const service = params.get("service");
@@ -361,11 +281,6 @@
     mainHeading.textContent = selectedService.title;
   }
 
-  /**
-   * ---------------------------------------------------
-   * Cookie Banner
-   * ---------------------------------------------------
-   */
   function initCookieBanner() {
     const cookieBanner = document.getElementById("cookie-banner");
     const acceptButton = document.getElementById("accept-cookies");
@@ -383,26 +298,13 @@
     });
   }
 
-  /**
-   * ---------------------------------------------------
-   * Event Bindings
-   * ---------------------------------------------------
-   */
-  document.addEventListener("scroll", () => {
-    toggleScrolled();
-    toggleScrollTop();
-    navmenuScrollspy();
-  });
-
-  document.addEventListener("DOMContentLoaded", () => {
+  function init() {
     initMobileNav();
     initScrollTop();
     setCopyrightYear();
     initDynamicServiceContent();
     initCookieBanner();
-  });
 
-  window.addEventListener("load", () => {
     toggleScrolled();
     toggleScrollTop();
     removePreloader();
@@ -413,5 +315,13 @@
     initSwipers();
     handleHashScrollOnLoad();
     navmenuScrollspy();
+  }
+
+  document.addEventListener("scroll", () => {
+    toggleScrolled();
+    toggleScrollTop();
+    navmenuScrollspy();
   });
+
+  init();
 })();
