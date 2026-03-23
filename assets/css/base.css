@@ -1,55 +1,77 @@
-@charset "UTF-8";
+/* =========================================================
+   BASE
+========================================================= */
 
-/* Fonts */
 :root {
-  --default-font: "Roboto", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
-  --heading-font: "Montserrat", sans-serif;
-  --nav-font: "Montserrat", sans-serif;
+  --color-bg: #07111f;
+  --color-bg-alt: #0c1729;
+  --color-panel: rgba(255, 255, 255, 0.04);
+  --color-panel-strong: rgba(255, 255, 255, 0.08);
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-soft: rgba(255, 255, 255, 0.06);
+
+  --color-text: #ffffff;
+  --color-text-muted: #c8d4e3;
+  --color-text-soft: #94a3b8;
+
+  --color-primary: #2563eb;
+  --color-primary-hover: #1d4ed8;
+  --color-accent: #38bdf8;
+  --color-accent-soft: rgba(56, 189, 248, 0.14);
+
+  --color-success: #22c55e;
+  --color-shadow: rgba(0, 0, 0, 0.35);
+
+  --font-heading: "Montserrat", sans-serif;
+  --font-body: "Roboto", sans-serif;
+
+  --radius-sm: 14px;
+  --radius-md: 20px;
+  --radius-lg: 28px;
+
+  --transition: 0.3s ease;
 }
 
-/* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
-:root {
-  --background-color: #020c19;
-  --default-color: #fafdff;
-  --heading-color: #ffffff;
-  --accent-color: #208bf4;
-  --surface-color: #141e2b;
-  --contrast-color: #ffffff;
-}
-
-/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
-:root {
-  --nav-color: #d8e4f0;
-  --nav-hover-color: #ffffff;
-  --nav-mobile-background-color: #1b2634;
-  --nav-dropdown-background-color: #1b2634;
-  --nav-dropdown-color: #fafdff;
-  --nav-dropdown-hover-color: #208bf4;
-
-}
-/* Smooth scroll */
-:root {
+html {
   scroll-behavior: smooth;
 }
 
-/*--------------------------------------------------------------
-# General Styling & Shared Classes
---------------------------------------------------------------*/
 body {
-  color: var(--default-color);
-  background-color: var(--background-color);
-  font-family: var(--default-font);
+  margin: 0;
+  font-family: var(--font-body);
+  background: linear-gradient(180deg, #06101d 0%, #091627 100%);
+  color: var(--color-text);
+  line-height: 1.65;
+}
+
+body.index-page {
+  background: linear-gradient(180deg, #06101d 0%, #091627 35%, #0b1728 100%);
 }
 
 a {
-  color: var(--accent-color);
+  color: inherit;
   text-decoration: none;
-  transition: 0.3s;
+  transition: var(--transition);
 }
 
 a:hover {
-  color: color-mix(in srgb, var(--accent-color), transparent 25%);
   text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+section {
+  position: relative;
+  z-index: 1;
+}
+
+.container {
+  position: relative;
+  z-index: 2;
 }
 
 h1,
@@ -58,6 +80,13 @@ h3,
 h4,
 h5,
 h6 {
-  color: var(--heading-color);
-  font-family: var(--heading-font);
+  font-family: var(--font-heading);
+  margin-top: 0;
+  color: var(--color-text);
+  letter-spacing: -0.02em;
+}
+
+p {
+  color: var(--color-text-muted);
+  margin-bottom: 0;
 }
