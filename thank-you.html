@@ -1,26 +1,125 @@
 <!DOCTYPE html>
-
 <html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Thank You | Swift Designs Studio</title>
 
+  <!-- Bootstrap -->
   <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
   <link href="assets/css/main.css" rel="stylesheet">
+
+  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
+
+  <style>
+    body {
+      background: linear-gradient(135deg, #0c1623, #0a2540);
+      color: #ffffff;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    .thank-you-wrapper {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 40px 20px;
+    }
+
+    .thank-you-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 16px;
+      padding: 50px 40px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .thank-you-card h1 {
+      font-size: 2.8rem;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .thank-you-card p {
+      color: #c8d4e3;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .steps {
+      text-align: left;
+      margin: 30px 0;
+    }
+
+    .step {
+      margin-bottom: 12px;
+      color: #a9b8cc;
+    }
+
+    .btn-group-custom {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 25px;
+    }
+
+    .btn-primary {
+      background: #0ea5e9;
+      border: none;
+      padding: 12px 24px;
+      font-weight: 600;
+    }
+
+    .btn-outline {
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      color: #fff;
+      padding: 12px 24px;
+    }
+
+    .btn-outline:hover {
+      background: rgba(255, 255, 255, 0.08);
+    }
+  </style>
 </head>
 
 <body>
 
-  <div class="container text-center" style="padding:120px 20px;">
-    <h1>Thank You!</h1>
-    <p class="lead">Your message has been successfully sent.</p>
-    <p>We received your project details and will contact you within 24 hours.</p>
+  <div class="thank-you-wrapper">
+    <div class="thank-you-card">
 
-<a href="index.html" class="btn btn-primary mt-4">Return to Homepage</a>
+      <h1>You're All Set 🚀</h1>
 
+      <p>
+        Your request has been successfully submitted to <strong>Swift Designs Studio</strong>.
+      </p>
+
+      <p>
+        We’re reviewing your project details and will reach out within the next 24 hours.
+      </p>
+
+      <div class="steps">
+        <div class="step">✔️ Request received</div>
+        <div class="step">🔍 Reviewing your project</div>
+        <div class="step">📞 We'll contact you shortly</div>
+      </div>
+
+      <div class="btn-group-custom">
+        <a href="index.html" class="btn btn-primary">Return Home</a>
+        <a href="booking-systems.html" class="btn btn-outline">Book a Call</a>
+      </div>
+
+    </div>
   </div>
 
 </body>
+
 </html>
