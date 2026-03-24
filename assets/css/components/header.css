@@ -3,12 +3,16 @@
    Swift Designs Studio
 ===================================================== */
 
+/* ------------------------------
+   Header Shell
+------------------------------ */
 .header,
 #header,
 .header.fixed-top,
 #header.fixed-top,
 .scrolled .header,
 .scrolled #header {
+    position: sticky;
     background: rgba(7, 17, 31, 0.88);
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
@@ -19,25 +23,25 @@
 .header {
     position: sticky;
     top: 0;
-    z-index: 999;
+    z-index: 10000;
     padding: 16px 0;
-    transition: all 0.3s ease;
+    transition: background 0.3s ease, box-shadow 0.3s ease, padding 0.3s ease;
 }
 
 .header .container,
 .header .container-fluid {
+    position: relative;
+    z-index: 10001;
     max-width: 1320px;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 24px;
-    position: relative;
 }
 
-/* =====================================================
-   BRAND / LOGO
-===================================================== */
-
+/* ------------------------------
+   Brand / Logo
+------------------------------ */
 .header .logo {
     display: inline-flex;
     align-items: center;
@@ -45,17 +49,16 @@
     flex-shrink: 0;
     text-decoration: none;
     line-height: 1;
-    margin-right: 0;
     position: relative;
-    z-index: 1003;
+    z-index: 10003;
 }
 
 .header .logo img,
 .header .main-logo {
-    height: 52px;
-    width: auto;
-    max-width: 190px;
     display: block;
+    width: auto;
+    height: 52px;
+    max-width: 190px;
     filter: brightness(0) invert(1);
     transition: transform 0.3s ease, opacity 0.3s ease;
 }
@@ -66,10 +69,9 @@
     opacity: 0.96;
 }
 
-/* =====================================================
-   RIGHT SIDE WRAPPER
-===================================================== */
-
+/* ------------------------------
+   Right Side Wrapper
+------------------------------ */
 .header-right {
     display: flex;
     align-items: center;
@@ -77,15 +79,15 @@
     margin-left: auto;
 }
 
-/* =====================================================
-   NAVIGATION
-===================================================== */
-
+/* ------------------------------
+   Desktop Navigation
+------------------------------ */
 .navmenu {
+    position: relative;
+    z-index: 10002;
     display: flex;
     align-items: center;
     margin-left: auto;
-    gap: 18px;
 }
 
 .navmenu ul {
@@ -112,7 +114,7 @@
     font-weight: 600;
     line-height: 1;
     letter-spacing: -0.01em;
-    transition: color 0.25s ease, opacity 0.25s ease, background 0.25s ease;
+    transition: color 0.25s ease, background 0.25s ease, opacity 0.25s ease;
 }
 
 .navmenu a:hover,
@@ -122,7 +124,6 @@
     color: #ffffff;
 }
 
-/* Underline */
 .navmenu>ul>li>a::after {
     content: "";
     position: absolute;
@@ -141,10 +142,9 @@
     width: 100%;
 }
 
-/* =====================================================
-   CTA BUTTON
-===================================================== */
-
+/* ------------------------------
+   CTA Button
+------------------------------ */
 .btn-getstarted {
     display: inline-flex;
     align-items: center;
@@ -154,14 +154,15 @@
     padding: 0 20px;
     border-radius: 999px;
     background: linear-gradient(135deg, #2563eb, #3b82f6);
+    border: 1px solid rgba(59, 130, 246, 0.9);
     color: #ffffff;
     font-size: 0.92rem;
     font-weight: 700;
     text-decoration: none;
-    border: 1px solid rgba(59, 130, 246, 0.9);
-    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
-    transition: all 0.25s ease;
     white-space: nowrap;
+    box-shadow: 0 12px 28px rgba(37, 99, 235, 0.22);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease,
+        border-color 0.25s ease;
 }
 
 .btn-getstarted:hover,
@@ -173,10 +174,9 @@
     box-shadow: 0 16px 34px rgba(37, 99, 235, 0.28);
 }
 
-/* =====================================================
-   MOBILE NAV TOGGLE
-===================================================== */
-
+/* ------------------------------
+   Mobile Toggle
+------------------------------ */
 .mobile-nav-toggle {
     display: none;
     align-items: center;
@@ -191,7 +191,7 @@
     background: rgba(255, 255, 255, 0.04);
     border: 1px solid rgba(255, 255, 255, 0.08);
     transition: color 0.25s ease, transform 0.25s ease, background 0.25s ease;
-    z-index: 1003;
+    z-index: 10003;
 }
 
 .mobile-nav-toggle:hover {
@@ -201,9 +201,8 @@
 }
 
 /* =====================================================
-   TABLET / MOBILE
+   Tablet / Mobile Navigation
 ===================================================== */
-
 @media (max-width: 1199px) {
     .header {
         padding: 14px 0;
@@ -226,8 +225,6 @@
 
     .navmenu {
         margin-left: auto;
-        gap: 0;
-        position: relative;
         overflow: visible;
     }
 
@@ -244,37 +241,30 @@
         top: calc(100% + 12px);
         right: 0;
         left: auto;
-        width: min(320px, calc(100vw - 24px));
+
+        width: min(280px, calc(100vw - 32px));
         margin: 0;
-        padding: 14px 0;
+        padding: 10px 0;
         list-style: none;
+
         background: rgba(7, 17, 31, 0.98);
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
+
         border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 18px;
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4);
+        border-radius: 16px;
+        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
 
         display: none;
         flex-direction: column;
         align-items: stretch;
         gap: 0;
 
-        opacity: 0;
-        visibility: hidden;
-        pointer-events: none;
-        transform: translateY(-10px);
-        transition: opacity 0.28s ease, transform 0.28s ease, visibility 0.28s ease;
-        z-index: 9999;
+        z-index: 10004;
     }
 
-    .navmenu.navmenu-active ul,
-    .mobile-nav-active .navmenu ul {
+    body.mobile-nav-active .navmenu ul {
         display: flex;
-        opacity: 1;
-        visibility: visible;
-        pointer-events: auto;
-        transform: translateY(0);
     }
 
     .navmenu li {
@@ -285,17 +275,22 @@
     .navmenu a:focus {
         display: flex;
         width: 100%;
-        padding: 15px 20px;
-        font-size: 1rem;
-        color: #d6dfeb;
+        padding: 14px 18px;
         justify-content: flex-start;
+        color: #ffffff;
+        font-size: 0.98rem;
+        line-height: 1.35;
+        text-decoration: none;
+        transition: background 0.25s ease, color 0.25s ease, padding 0.25s ease;
     }
 
     .navmenu a:hover,
+    .navmenu a:focus,
     .navmenu a.active,
     .navmenu a.active:focus {
         color: #ffffff;
-        background: rgba(255, 255, 255, 0.03);
+        background: rgba(56, 189, 248, 0.08);
+        padding-left: 22px;
     }
 
     .navmenu>ul>li>a::after {
@@ -303,6 +298,9 @@
     }
 }
 
+/* =====================================================
+   Small Mobile
+===================================================== */
 @media (max-width: 767.98px) {
     .header {
         padding: 12px 0;
@@ -328,71 +326,27 @@
 
     .navmenu ul {
         top: calc(100% + 10px);
-        right: 0;
-        left: auto;
-        width: min(280px, calc(100vw - 24px));
-        border-radius: 16px;
+        width: min(260px, calc(100vw - 24px));
+        border-radius: 14px;
     }
 
     .navmenu a,
     .navmenu a:focus {
-        padding: 14px 18px;
-        font-size: 0.98rem;
+        padding: 13px 16px;
+        font-size: 0.96rem;
     }
 }
 
-@media (max-width: 1199px) {
-
-    .header,
-    .header-right,
-    .navmenu {
-        overflow: visible;
-    }
-
-    body.mobile-nav-active .navmenu ul {
-        position: absolute !important;
-        top: calc(100% + 12px) !important;
-        right: 0 !important;
-        left: auto !important;
-        width: min(320px, calc(100vw - 24px)) !important;
-        z-index: 99999 !important;
-
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: stretch !important;
-        gap: 0 !important;
-
-        padding: 14px 0 !important;
-        margin: 0 !important;
-        list-style: none !important;
-
-        background: rgba(7, 17, 31, 0.98) !important;
-        border: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-radius: 18px !important;
-        box-shadow: 0 24px 60px rgba(0, 0, 0, 0.4) !important;
-
-        opacity: 1 !important;
-        visibility: visible !important;
-        pointer-events: auto !important;
-        transform: translateY(0) !important;
-    }
-
-    body.mobile-nav-active .navmenu ul li {
-        display: block !important;
-        width: 100% !important;
-    }
-
-    body.mobile-nav-active .navmenu ul li a {
-        display: flex !important;
-        width: 100% !important;
-        padding: 15px 20px !important;
-        color: #ffffff !important;
-        font-size: 1rem !important;
-        text-decoration: none !important;
-        background: transparent !important;
-        opacity: 1 !important;
-        visibility: visible !important;
-    }
+/* =====================================================
+   Stacking Safety
+===================================================== */
+main,
+section,
+.hero,
+.hero-section,
+.hero-background {
+    position: relative;
+    z-index: 1;
 }
 
 /* ===== FINAL MOBILE NAV STACKING FIX ===== */
@@ -417,14 +371,9 @@
 @media (max-width: 1199px) {
     .navmenu ul {
         position: fixed !important;
-        top: 76px !important;
-        left: 20px !important;
-        right: 20px !important;
-        padding: 10px 0 !important;
-        border-radius: 14px !important;
-        max-width: 360px !important;
-        margin: 0 auto !important;
-        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45) !important;
+        top: 80px !important;
+        left: 12px !important;
+        right: 12px !important;
         z-index: 10003 !important;
     }
 
@@ -444,28 +393,99 @@ section,
 }
 
 @media (max-width: 1199px) {
-
-    .navmenu ul li a:hover,
-    .navmenu ul li a:focus {
-        background: rgba(255, 255, 255, 0.04) !important;
-        color: #ffffff !important;
-    }
+  .navmenu ul {
+    padding: 14px 0 10px !important;
+  }
 }
 
 @media (max-width: 1199px) {
-    .navmenu ul li a {
-        padding: 14px 18px !important;
-        font-size: 15px !important;
-    }
+  .navmenu ul li a:hover,
+  .navmenu ul li a:focus {
+    background: rgba(255, 255, 255, 0.04) !important;
+    color: #ffffff !important;
+  }
 }
 
 @media (max-width: 1199px) {
-    .navmenu ul li a {
-        transition: all 0.25s ease;
-    }
+  .navmenu ul {
+    position: fixed !important;
 
-    .navmenu ul li a:hover {
-        background: rgba(56, 189, 248, 0.08) !important;
-        padding-left: 22px !important;
-    }
+    /* 👇 make it smaller + centered */
+    top: 76px !important;
+    left: 20px !important;
+    right: 20px !important;
+
+    padding: 10px 0 !important;
+
+    border-radius: 14px !important;
+
+    max-width: 360px;
+    margin: 0 auto !important; /* centers it */
+
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.45) !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navmenu ul li a {
+    padding: 14px 18px !important;
+    font-size: 15px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navmenu ul li a {
+    transition: all 0.25s ease;
+  }
+
+  .navmenu ul li a:hover {
+    background: rgba(56, 189, 248, 0.08) !important;
+    padding-left: 22px !important;
+  }
+}
+
+@media (max-width: 1199px) {
+  .navmenu ul {
+    position: fixed !important;
+
+    top: 76px !important;
+
+    /* ❌ REMOVE left/right stretch */
+    left: 50% !important;
+    right: auto !important;
+
+    /* ✅ TRUE CENTER */
+    transform: translateX(-50%) translateY(-10px);
+
+    width: 90%;
+    max-width: 320px; /* 👈 THIS controls size */
+
+    padding: 10px 0;
+
+    border-radius: 16px;
+
+    background: rgba(7, 17, 31, 0.98);
+    backdrop-filter: blur(16px);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.45);
+
+    display: flex;
+    flex-direction: column;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+
+    transition: all 0.28s ease;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu ul {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+
+    transform: translateX(-50%) translateY(0); /* 👈 keep centered */
+  }
 }
