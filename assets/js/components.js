@@ -4,7 +4,6 @@ async function loadComponent(targetId, filePath) {
 
   try {
     const response = await fetch(filePath);
-
     if (!response.ok) {
       console.error("Failed to load:", filePath);
       return;
@@ -19,10 +18,9 @@ async function loadComponent(targetId, filePath) {
 
 async function initLayout() {
   await loadComponent("header", "/components/header.html");
-  await new Promise(requestAnimationFrame);
-
   await loadComponent("footer", "/components/footer.html");
-  await new Promise(requestAnimationFrame);
+
+  await new Promise((resolve) => setTimeout(resolve, 50));
 
   if (!document.querySelector('script[data-main-js="true"]')) {
     const script = document.createElement("script");
@@ -30,11 +28,17 @@ async function initLayout() {
     script.setAttribute("data-main-js", "true");
 
     script.onload = () => {
+      window.mainInitialized = true;
+
+      if (typeof window.initApp === "function") {
+        window.initApp();
+      }
+
       if (window.AOS) {
         AOS.init({
           duration: 800,
           easing: "ease-in-out",
-          once: true
+          once: true,
         });
       }
     };
